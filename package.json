@@ -1,0 +1,27 @@
+{
+  "name": "course-homeworks",
+  "version": "1.0.0",
+  "description": "Homeworks solutions for computer science course",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinelnikov-web/course-homeworks.git"
+  },
+  "author": "sinelnikov-web",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sinelnikov-web/course-homeworks/issues"
+  },
+  "homepage": "https://github.com/sinelnikov-web/course-homeworks#readme",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.21.4",
+    "@types/jest": "^29.5.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  }
+}
