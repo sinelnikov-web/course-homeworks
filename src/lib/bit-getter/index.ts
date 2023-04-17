@@ -1,1 +1,1 @@
-export {createBitGetter} from './createBitGetter';
+export {createBitGetter} from "./createBitGetter";

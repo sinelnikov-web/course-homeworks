@@ -1,7 +1,7 @@
 import {createBitGetter} from "../..//bit-getter";
-import {AllowedTypes, Schema} from '../types';
-import {BYTE_SIZE} from '../consts';
-import {assertDataType} from '../validation';
+import {AllowedTypes, Schema} from "../types";
+import {BYTE_SIZE} from "../consts";
+import {assertDataType} from "../validation";
 import {cutValue, convertToNumber} from "../helpers";
 
 export function encode(data: Iterable<AllowedTypes>, schema: Schema): ArrayBuffer {

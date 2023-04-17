@@ -1,21 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var canvas_1 = require("src/lib/canvas");
-var canvasNormal = document.querySelector('#normal');
-var canvasGrayscale = document.querySelector('#grayscale');
-var canvasInverted = document.querySelector('#inverted');
+var canvasNormal = document.querySelector("#normal");
+var canvasGrayscale = document.querySelector("#grayscale");
+var canvasInverted = document.querySelector("#inverted");
 var image = new Image();
 image.onload = function () {
     var canvasUtils = new canvas_1.CanvasUtils();
-    var canvasNormalCtx = canvasNormal.getContext('2d');
+    var canvasNormalCtx = canvasNormal.getContext("2d");
     canvasNormal.width = image.width;
     canvasNormal.height = image.height;
     canvasNormalCtx.drawImage(image, 0, 0);
-    var canvasGrayscaleCtx = canvasGrayscale.getContext('2d');
+    var canvasGrayscaleCtx = canvasGrayscale.getContext("2d");
     var grayscaledImageData = canvasUtils.grayscaleFromCanvas(canvasNormal);
     canvasGrayscaleCtx.putImageData(grayscaledImageData, 0, 0);
-    var canvasInvertedCtx = canvasInverted.getContext('2d');
+    var canvasInvertedCtx = canvasInverted.getContext("2d");
     var invertedImageData = canvasUtils.invertFromCanvas(canvasNormal);
     canvasInvertedCtx.putImageData(invertedImageData, 0, 0);
 };
-image.src = 'https://avatars.dzeninfra.ru/get-zen_doc/34175/pub_5cea2361585c2f00b5c9cb0b_5cea310a752e5b00b25b9c01/scale_1200';
+image.src = "https://avatars.dzeninfra.ru/get-zen_doc/34175/pub_5cea2361585c2f00b5c9cb0b_5cea310a752e5b00b25b9c01/scale_1200";

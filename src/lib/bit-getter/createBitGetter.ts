@@ -1,25 +1,25 @@
-import {BitGetter} from './types';
+import {BitGetter} from "./types";
 
 export function createBitGetter(array: Uint8Array): BitGetter {
     const resetBit = (elementIndex: number, bitIndex: number) => {
         array[elementIndex] = array[elementIndex] & ~(0b1 << bitIndex);
-    }
+    };
 
     const setBit = (elementIndex: number, bitIndex: number) => {
         array[elementIndex] = array[elementIndex] | (0b1 << bitIndex);
-    }
+    };
 
     const assertValidation = (elementIndex: number, bitIndex: number) => {
         if (elementIndex >= array.length || elementIndex < 0) {
-            throw new Error('Array index out of range!');
+            throw new Error("Array index out of range!");
         }
         if (bitIndex > 0b111) {
-            throw new Error('The bit index must be less than or equal to 7');
+            throw new Error("The bit index must be less than or equal to 7");
         }
         if (bitIndex < 0b0) {
-            throw new Error('The bit index must be more than or equal to 0')
+            throw new Error("The bit index must be more than or equal to 0");
         }
-    }
+    };
 
     return {
         get(elementIndex: number, bitIndex: number): number {
@@ -35,5 +35,5 @@ export function createBitGetter(array: Uint8Array): BitGetter {
                 setBit(elementIndex, bitIndex);
             }
         }
-    }
+    };
 }

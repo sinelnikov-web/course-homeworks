@@ -12,8 +12,8 @@ export function decode(buffer: ArrayBuffer, schema: Schema): Array<AllowedTypes>
     let offset = 0;
     let currentElement = 0;
 
-    for (let [size, type] of schema) {
-        let value = '';
+    for (const [size, type] of schema) {
+        let value = "";
         for (let i = 0; i < size; i++) {
             const byteIndex = Math.floor((offset + i) / BYTE_SIZE);
             const bitIndex = 7 - ((offset + i) % BYTE_SIZE);
