@@ -25,7 +25,7 @@ export function createBitGetter(array: Uint8Array): BitGetter {
         get(elementIndex: number, bitIndex: number): number {
             assertValidation(elementIndex, bitIndex);
             const bit = array[elementIndex] & (0b1 << bitIndex);
-            return bit === 0 ? 0 : 1;
+            return bit >> bitIndex;
         },
         set(elementIndex: number, bitIndex: number, newBitValue: number): void {
             assertValidation(elementIndex, bitIndex);

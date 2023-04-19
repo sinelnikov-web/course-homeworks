@@ -1,30 +1,34 @@
 import {LinkedList} from "./linkedList";
 
 describe("linked-list", function () {
-    test("Can add items", () => {
+    test("Can append items", () => {
         const linkedList = new LinkedList();
 
-        linkedList.add(1);
-        linkedList.add(3);
-        linkedList.add(2);
+        linkedList.appendRight(1);
+        linkedList.appendRight(3);
+        linkedList.appendLeft(2);
+        linkedList.appendLeft(4);
+        linkedList.appendLeft(5);
 
-        expect(linkedList.first.value).toBe(1);
-        expect(linkedList.last.value).toBe(2);
-        expect(linkedList.first.next.value).toBe(3);
-        expect(linkedList.first.next.next.prev.value).toBe(3);
-        expect(linkedList.last.next).toBe(null);
+        expect(linkedList.first?.value).toBe(5);
+        expect(linkedList.last?.value).toBe(3);
+        expect(linkedList.first?.next?.value).toBe(4);
+        expect(linkedList.first?.next?.next?.prev?.value).toBe(4);
+        expect(linkedList.last?.next).toBe(null);
     });
     test("Can pop items", () => {
         const linkedList = new LinkedList();
 
-        linkedList.add(1);
-        linkedList.add(3);
-        linkedList.add(2);
+        linkedList.appendRight(1);
+        linkedList.appendRight(3);
+        linkedList.appendLeft(2);
+        linkedList.appendLeft(4);
+        linkedList.appendLeft(5);
 
-        expect(linkedList.pop()).toBe(2);
-        expect(linkedList.pop()).toBe(3);
-        expect(linkedList.pop()).toBe(1);
-        expect(linkedList.pop()).toBe(null);
+        expect(linkedList.popRight()).toBe(3);
+        expect(linkedList.popRight()).toBe(1);
+        expect(linkedList.popLeft()).toBe(5);
+        expect(linkedList.popRight()).toBe(2);
     });
     test("Can iterate over list", () => {
         const expectedValues = [1, 3, 5];
@@ -37,10 +41,10 @@ describe("linked-list", function () {
     test("Can initialize list with iterable", () => {
         const linkedList = new LinkedList(new Set([1, 3, 5]));
 
-        expect(linkedList.first.value).toBe(1);
-        expect(linkedList.last.value).toBe(5);
-        expect(linkedList.first.next.value).toBe(3);
-        expect(linkedList.first.next.next.prev.value).toBe(3);
-        expect(linkedList.last.next).toBe(null);
+        expect(linkedList.first?.value).toBe(1);
+        expect(linkedList.last?.value).toBe(5);
+        expect(linkedList.first?.next?.value).toBe(3);
+        expect(linkedList.first?.next?.next?.prev?.value).toBe(3);
+        expect(linkedList.last?.next).toBe(null);
     });
 });

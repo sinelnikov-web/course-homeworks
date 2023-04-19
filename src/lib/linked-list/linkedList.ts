@@ -9,14 +9,14 @@ export class LinkedList<T> implements ILinkedList<T>{
     constructor(iterable?: Iterable<T>) {
         if (iterable) {
             for (const item of iterable) {
-                this.add(item);
+                this.appendRight(item);
             }
         }
     }
 
-    public add(value: T): void {
+    public appendRight(value: T): void {
         const node = new LinkedListNode(value);
-        if (this.#first === null) {
+        if (this.#last === null) {
             this.#first = node;
             this.#last = node;
             return;
@@ -26,7 +26,19 @@ export class LinkedList<T> implements ILinkedList<T>{
         this.#last = node;
     }
 
-    public pop(): T {
+    public appendLeft(value: T): void {
+        const node = new LinkedListNode(value);
+        if (this.#first === null) {
+            this.#first = node;
+            this.#last = node;
+            return;
+        }
+        node.next = this.#first;
+        this.#first.prev = node;
+        this.#first = node;
+    }
+
+    public popRight(): Nullable<T> {
         if (this.#last === null) {
             return null;
         }
@@ -36,8 +48,28 @@ export class LinkedList<T> implements ILinkedList<T>{
             this.#last = null;
         } else {
             const prev = this.#last.prev;
-            prev.next = null;
+            if (prev) {
+                prev.next = null;
+            }
             this.#last = prev;
+        }
+        return value;
+    }
+
+    public popLeft(): Nullable<T> {
+        if (this.#first === null) {
+            return null;
+        }
+        const value = this.#first.value;
+        if (this.#last === this.#first) {
+            this.#first = null;
+            this.#last = null;
+        } else {
+            const next = this.#first.next;
+            if (next) {
+                next.prev = null;
+            }
+            this.#first = next;
         }
         return value;
     }

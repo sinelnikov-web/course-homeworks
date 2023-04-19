@@ -29,4 +29,5 @@ export function convertValueByType(value: string, type: SchemaDataType, size: nu
         }
         return str;
     }
+    return 0;
 }

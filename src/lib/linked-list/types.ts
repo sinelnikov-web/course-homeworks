@@ -9,6 +9,8 @@ export interface ILinkedListNode<T> {
 export interface ILinkedList<T> {
     get first(): Nullable<ILinkedListNode<T>>;
     get last(): Nullable<ILinkedListNode<T>>;
-    add(value: T): void;
-    pop(): T;
+    appendRight(value: T): void;
+    appendLeft(value: T): void;
+    popRight(): Nullable<T>;
+    popLeft(): Nullable<T>;
 }
