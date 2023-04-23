@@ -1,11 +1,9 @@
-import {ICanvasUtils} from "./types";
-
-export class CanvasUtils implements ICanvasUtils {
-    private createEmptyCanvas(): {emptyCanvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D} {
-        const emptyCanvas = document.createElement('canvas');
-        return {emptyCanvas, ctx: emptyCanvas.getContext('2d')};
+export class CanvasUtils {
+    createEmptyCanvas() {
+        const emptyCanvas = document.createElement("canvas");
+        return {emptyCanvas, ctx: emptyCanvas.getContext("2d")};
     }
-    private grayscaleRGBAArray(data: Uint8ClampedArray) {
+    grayscaleRGBAArray(data) {
         for (let i = 0; i < data.length; i += 4) {
             let grayScaledColor = (data[i] + data[i + 1] + data[i + 2]) / 3;
             data[i] = grayScaledColor;
@@ -13,14 +11,14 @@ export class CanvasUtils implements ICanvasUtils {
             data[i + 2] = grayScaledColor;
         }
     }
-    private invertRGBAArray(data: Uint8ClampedArray) {
+    invertRGBAArray(data) {
         for (let i = 0; i < data.length; i += 4) {
             data[i] = 255 - data[i];
             data[i + 1] = 255 - data[i + 1];
             data[i + 2] = 255 - data[i + 2];
         }
     }
-    private fetchImage(url: string): Promise<HTMLImageElement> {
+    fetchImage(url) {
         return new Promise((resolve, reject) => {
             const img = new Image();
             img.crossOrigin = "Anonymous";
@@ -28,12 +26,12 @@ export class CanvasUtils implements ICanvasUtils {
                 resolve(img);
             };
             img.onerror = () => {
-                reject(`Can\'t download the image from ${url}`);
-            }
+                reject(`Can't download the image from ${url}`);
+            };
             img.src = url;
-        })
+        });
     }
-    grayscaleFromUrl(url: string): Promise<{data: ImageData; width: number, height: number}> {
+    grayscaleFromUrl(url) {
         return new Promise((resolve, reject) => {
             const {emptyCanvas, ctx} = this.createEmptyCanvas();
             this.fetchImage(url).then((img) => {
@@ -44,11 +42,11 @@ export class CanvasUtils implements ICanvasUtils {
                 this.grayscaleRGBAArray(newImageData.data);
                 resolve({data: newImageData, width: img.width, height: img.height});
             }).catch(reject);
-        })
+        });
     }
 
-    grayscaleFromCanvas(canvas: HTMLCanvasElement): ImageData {
-        const defaultCtx = canvas.getContext('2d');
+    grayscaleFromCanvas(canvas) {
+        const defaultCtx = canvas.getContext("2d");
         const {emptyCanvas, ctx} = this.createEmptyCanvas();
         emptyCanvas.height = canvas.height;
         emptyCanvas.width = canvas.width;
@@ -58,7 +56,7 @@ export class CanvasUtils implements ICanvasUtils {
         return imageData;
     }
 
-    grayscaleFromImageData(imageData: ImageData): ImageData {
+    grayscaleFromImageData(imageData) {
         const {emptyCanvas, ctx} = this.createEmptyCanvas();
         ctx.putImageData(imageData, 0, 0);
         const newImageData = ctx.getImageData(0, 0, emptyCanvas.width, emptyCanvas.height);
@@ -66,7 +64,7 @@ export class CanvasUtils implements ICanvasUtils {
         return newImageData;
     }
 
-    invertFromUrl(url: string): Promise<{data: ImageData; width: number, height: number}> {
+    invertFromUrl(url) {
         return new Promise((resolve, reject) => {
             const {emptyCanvas, ctx} = this.createEmptyCanvas();
             this.fetchImage(url).then((img) => {
@@ -77,11 +75,11 @@ export class CanvasUtils implements ICanvasUtils {
                 this.invertRGBAArray(newImageData.data);
                 resolve({data: newImageData, width: img.width,  height: img.height});
             }).catch(reject);
-        })
+        });
     }
 
-    invertFromCanvas(canvas: HTMLCanvasElement): ImageData {
-        const defaultCtx = canvas.getContext('2d');
+    invertFromCanvas(canvas) {
+        const defaultCtx = canvas.getContext("2d");
         const {emptyCanvas, ctx} = this.createEmptyCanvas();
         emptyCanvas.height = canvas.height;
         emptyCanvas.width = canvas.width;
@@ -91,7 +89,7 @@ export class CanvasUtils implements ICanvasUtils {
         return imageData;
     }
 
-    invertFromImageData(imageData: ImageData): ImageData {
+    invertFromImageData(imageData) {
         const {emptyCanvas, ctx} = this.createEmptyCanvas();
         ctx.putImageData(imageData, 0, 0);
         const newImageData = ctx.getImageData(0, 0, emptyCanvas.width, emptyCanvas.height);

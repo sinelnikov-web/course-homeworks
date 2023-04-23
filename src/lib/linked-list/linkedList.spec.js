@@ -1,4 +1,4 @@
-import {LinkedList} from "./linkedList";
+import {LinkedList} from "./linkedList.js";
 
 describe("linked-list", function () {
     test("Can append items", () => {

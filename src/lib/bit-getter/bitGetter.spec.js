@@ -1,4 +1,4 @@
-import {createBitGetter} from "./createBitGetter";
+import {createBitGetter} from "./createBitGetter.js";
 
 describe("BitGetter", function () {
     test("Can get bit value", () => {

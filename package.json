@@ -6,6 +6,12 @@
   "scripts": {
     "test": "jest"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sinelnikov-web/course-homeworks.git"
@@ -17,17 +23,11 @@
   },
   "homepage": "https://github.com/sinelnikov-web/course-homeworks#readme",
   "devDependencies": {
-    "@babel/preset-typescript": "^7.21.4",
-    "@types/jest": "^29.5.0",
-    "@typescript-eslint/eslint-plugin": "^5.58.0",
-    "@typescript-eslint/parser": "^5.58.0",
+    "@babel/preset-env": "^7.21.4",
+    "babel-jest": "^29.5.0",
     "eslint": "^8.38.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.5.0",
-    "ts-jest": "^29.1.0",
-    "ts-loader": "^9.4.2",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.3",
     "webpack-cli": "^5.0.1"
   }
 }

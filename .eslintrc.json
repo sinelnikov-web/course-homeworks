@@ -1,38 +1,30 @@
 {
     "env": {
         "node": true,
-        "es2021": true
+        "es2022": true,
+        "jest": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended"
+        "eslint:recommended"
     ],
-    "overrides": [
-    ],
-    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
     "rules": {
-        "@typescript-eslint/no-var-requires": 0,
         "indent": [
-            "error",
+            "warn",
             4
         ],
         "linebreak-style": [
-            "error",
+            "warn",
             "unix"
         ],
         "quotes": [
-            "error",
+            "warn",
             "double"
         ],
         "semi": [
-            "error",
+            "warn",
             "always"
         ]
     }

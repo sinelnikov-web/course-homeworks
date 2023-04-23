@@ -1,6 +1,5 @@
-import {SchemaDataType} from "./types";
 
-export function assertDataType(dataType: string, schemaType: SchemaDataType) {
+export function assertDataType(dataType, schemaType) {
     const numberCondition = dataType === "number" && schemaType !== "number";
     const booleanCondition = dataType === "boolean" && schemaType !== "boolean";
     const stringCondition = dataType === "string" && schemaType !== "ascii";

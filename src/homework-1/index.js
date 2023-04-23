@@ -1,8 +1,7 @@
-import {createBitGetter} from "../lib/bit-getter";
+import {createBitGetter} from "../lib/bit-getter/index.js";
 
 const bitGetter = createBitGetter(new Uint8Array([0b1110, 0b1101]));
 
-const num: number = "dsf";
 
 // Второй параметр это порядок бита "справа-налево"
 console.log(bitGetter.get(0, 1)); // 1

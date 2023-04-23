@@ -1,12 +1,10 @@
-import {Nullable} from "../../shared/types";
-import {ILinkedList, ILinkedListNode} from "./types";
-import {LinkedListNode} from "./linkedListNode";
+import {LinkedListNode} from "./linkedListNode.js";
 
-export class LinkedList<T> implements ILinkedList<T>{
-    #first: Nullable<ILinkedListNode<T>> = null;
-    #last: Nullable<ILinkedListNode<T>> = null;
+export class LinkedList {
+    #first = null;
+    #last = null;
 
-    constructor(iterable?: Iterable<T>) {
+    constructor(iterable) {
         if (iterable) {
             for (const item of iterable) {
                 this.appendRight(item);
@@ -14,7 +12,7 @@ export class LinkedList<T> implements ILinkedList<T>{
         }
     }
 
-    public appendRight(value: T): void {
+    appendRight(value) {
         const node = new LinkedListNode(value);
         if (this.#last === null) {
             this.#first = node;
@@ -26,7 +24,7 @@ export class LinkedList<T> implements ILinkedList<T>{
         this.#last = node;
     }
 
-    public appendLeft(value: T): void {
+    appendLeft(value) {
         const node = new LinkedListNode(value);
         if (this.#first === null) {
             this.#first = node;
@@ -38,7 +36,7 @@ export class LinkedList<T> implements ILinkedList<T>{
         this.#first = node;
     }
 
-    public popRight(): Nullable<T> {
+    popRight() {
         if (this.#last === null) {
             return null;
         }
@@ -56,7 +54,7 @@ export class LinkedList<T> implements ILinkedList<T>{
         return value;
     }
 
-    public popLeft(): Nullable<T> {
+    popLeft() {
         if (this.#first === null) {
             return null;
         }
