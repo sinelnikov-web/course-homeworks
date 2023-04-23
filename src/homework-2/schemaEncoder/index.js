@@ -23,15 +23,17 @@ const schema = [
     [2, "number"],
     [1, "boolean"],
     [1, "boolean"],
-    [16, "ascii"],
+    [64, "ascii"],
 ];
 
-
-
-console.log(decode(encode([
+const encodedData = encode([
     2,
     3,
     true,
     false,
-    "ab",
-], schema), schema));
+    "Hello!!!",
+], schema);
+
+console.log(encodedData);
+
+console.log(decode(encodedData, schema));

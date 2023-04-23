@@ -11,8 +11,9 @@ export function encode(data, schema) {
         for (const item of data) {
             if (typeof item === "string") {
                 yield* item;
+            } else {
+                yield item;
             }
-            yield item;
         }
     }
     const iter = dataIterator();
