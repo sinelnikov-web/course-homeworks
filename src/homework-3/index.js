@@ -1,4 +1,4 @@
-import {LinkedList} from "src/lib/linked-list";
+import {LinkedList} from "../lib/linked-list/index.js";
 
 const list = new LinkedList();
 
@@ -19,3 +19,19 @@ for (const value of list) {
 for (const value of list) {
     console.log(value); // ничего
 }
+
+import {Structure} from "../lib/structure/index.js";
+
+const s = Structure([
+    ["firstName", "utf16", 10],
+    ["lastName", "utf16", 10],
+    ["age", "u16"],
+]);
+
+s.firstName = "Jack 😀";
+s.age = 256;
+s.lastName = "Black 🇮🇹";
+
+console.log(s.firstName); // Jack 😀
+console.log(s.lastName); // Black 🇮🇹
+console.log(s.age); // 33

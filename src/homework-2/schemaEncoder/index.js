@@ -20,3 +20,5 @@ const encodedData = encode([
 console.log(encodedData);
 
 console.log(decode(encodedData, schema));
+
+Function("class T { get name() {}; set name(value) {}; }")();
