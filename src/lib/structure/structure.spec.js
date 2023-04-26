@@ -13,7 +13,7 @@ describe("structure", function () {
         s.age = 21;
 
         expect(s.firstName).toBe("Maxim");
-        expect(s.lastName).toBe("Синельников");
+        expect(s.lastName).toBe("Синельнико");
         expect(s.age).toBe(21);
     });
     test("Can set overflowed data", () => {

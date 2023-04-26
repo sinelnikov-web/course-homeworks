@@ -41,7 +41,8 @@ export function Structure(schema) {
                 if (type === "utf16" || type === "ascii") {
                     value = "";
                     for (let i = 0; i < length; i++) {
-                        value += String.fromCharCode((array[index + i] & createMask(size, offset)) >> offset);
+                        const code = (array[index + i] & createMask(size, offset)) >> offset;
+                        value += code !== 0 ? String.fromCharCode(code) : "";
                     }
                 } else {
                     value = (array[index] & createMask(size, offset)) >> offsets;

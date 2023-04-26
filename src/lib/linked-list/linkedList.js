@@ -4,11 +4,9 @@ export class LinkedList {
     #first = null;
     #last = null;
 
-    constructor(iterable) {
-        if (iterable) {
-            for (const item of iterable) {
-                this.appendRight(item);
-            }
+    constructor(iterable = []) {
+        for (const item of iterable) {
+            this.appendRight(item);
         }
     }
 
@@ -80,7 +78,7 @@ export class LinkedList {
         return this.#last;
     }
 
-    *[Symbol.iterator]() {
+    * [Symbol.iterator]() {
         let current = this.first;
         while (current !== null) {
             yield current.value;
