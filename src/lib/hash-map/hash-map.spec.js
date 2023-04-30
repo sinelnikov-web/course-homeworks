@@ -53,4 +53,16 @@ describe("Hash map", function () {
         expect(map.get(obj)).toBe(2);
         expect(map.get(99999)).toBe(true);
     });
+
+    test("Hash Map doesn't resize when set same key", () => {
+        const map = new HashMap(5);
+        map.set("foo", "bar");
+        map.set("foo", "bar");
+        map.set("foo", "bar");
+        map.set("foo", "bar");
+        map.set("foo", "bar");
+        map.set("foo", "bar");
+        expect(map.size).toBe(1);
+        expect(map.fillRate).toBe(0.2);
+    });
 });
